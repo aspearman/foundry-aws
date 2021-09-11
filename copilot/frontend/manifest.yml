@@ -7,12 +7,22 @@ http:
   path: '/'
   healthcheck: '/api/status'
   stickiness: false
+count: 1 # Number of tasks to run in the service
 cpu: 256
 memory: 512
-count: 1 # Number of tasks to run in the service
+storage:
+  volumes:
+    foundry_volume:
+      efs:
+        uid: 1000
+        gid: 10000
+      path: '/data' # The location in the container where you would like your volume to be mounted
+      read_only: false
 variables: # See available env vars: https://github.com/felddy/foundryvtt-docker#environment-variables
   CONTAINER_VERBOSE: false
   FOUNDRY_PROXY_SSL: false
+  FOUNDRY_UID: 1000
+  FOUNDRY_GID: 10000
 secrets: # From AWS Systems Manager (SSM) Parameter Store
   FOUNDRY_ADMIN_KEY: '/copilot/foundry-aws/production/secrets/FOUNDRY_ADMIN_KEY'
   FOUNDRY_PASSWORD: '/copilot/foundry-aws/production/secrets/FOUNDRY_PASSWORD'
