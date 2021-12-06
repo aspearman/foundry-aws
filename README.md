@@ -1,6 +1,6 @@
 # Foundry VTT on AWS
 
-This repository contains the necessary infrastructure-as-code files to deploy to AWS Fargate and ECS using AWS Copilot. 
+This repository contains the necessary infrastructure-as-code files to deploy the [Foundry-VTT Docker container](https://github.com/felddy/foundryvtt-docker) to AWS Fargate and ECS using AWS Copilot. 
 
 ## Project Status
 
